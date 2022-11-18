@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import props from '../data/profile-data';
 
 const ProfileStyled = styled.div`
     grid-area: profile;
@@ -19,6 +20,7 @@ const ProfileStyled = styled.div`
 
     .username {
         margin-block: .5rem;
+        margin-block-end: 1.5rem;
         font: var(--headLine2-ligth);
     }
 
@@ -35,31 +37,37 @@ const ProfileStyled = styled.div`
     a:hover{
         text-decoration:underline;
     }
-`
+
+    .buttons {
+        display:flex;
+        gap:1rem;
+        margin-block-end: 1.5rem;
+    }
+`   
 
 function Profile() {
+    const {avatar_url, name, login, bio, followers , following, location, blog , twitter_username} = props
     return (
         <ProfileStyled>
-            <img className='avatar' src='' alt=''></img>
-            <p className='name'>Gabriela Rojas</p>
-            <p className='username'>GabRo21</p>
+            <img className='avatar' width="278" height="278"src={avatar_url} alt=''></img>
+            <p className='name'>{name}</p>
+            <p className='username'>{login}</p>
             <div className="buttons">
                 <button>Follow</button>
                 <button>Sponsors</button>
             </div>
             <p className='bio info'>
-                hola mundo!
+                {bio}
             </p>
             <p className='followers info'>
-                125 followers • 1 following
+                {followers} <span>followers</span> • {following} <span>following</span>•
             </p>
-            <p className='starts info'>81</p>
-            <p className='location info'>Peru</p>
+            <p className='location info'>{location}</p>
             <a className= 'info' href='https://www.linkedin.com/in/gabrielarojasroque/' target='_blank' rel='noreferrer'>
-            https://www.linkedin.com/in/gabrielarojasroque/
+                {blog}
             </a>
             <a className= 'info' href='https://twitter.com/Gabriel78383636' target='_blank' rel='noreferrer'>
-            @Gabriel78383636
+                {twitter_username}
             </a>
         </ProfileStyled>
     )
