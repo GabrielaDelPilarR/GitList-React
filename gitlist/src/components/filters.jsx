@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Icon from './icon'
 
 const FiltersStyled = styled.div`
     grid-area: filters;
@@ -8,7 +9,7 @@ const FiltersStyled = styled.div`
 function Filters() {
     return (
         <FiltersStyled>
-            Filters
+            <Icon name="arrow-down"></Icon>
         </FiltersStyled>
     )
 }

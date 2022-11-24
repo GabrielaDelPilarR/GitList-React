@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import props from '../data/profile-data';
+import Button from './button';
+import Icon from './icon/index'
 
 const ProfileStyled = styled.div`
+
     grid-area: profile;
     .avatar{
         border-radius: 50%;
@@ -43,6 +46,10 @@ const ProfileStyled = styled.div`
         gap:1rem;
         margin-block-end: 1.5rem;
     }
+
+    .custon{
+        border: 1px solid red;
+    }
 `   
 
 function Profile() {
@@ -53,8 +60,20 @@ function Profile() {
             <p className='name'>{name}</p>
             <p className='username'>{login}</p>
             <div className="buttons">
-                <button>Follow</button>
-                <button>Sponsors</button>
+                <Button
+                text = 'Follow'
+                link = '#' 
+                className= 'custon'
+                >
+                </Button>
+                <Button 
+                text= 'Sponsor'
+                icon = {<Icon
+                name="heart"
+                size = {24}
+                />}
+                >  
+                </Button>
             </div>
             <p className='bio info'>
                 {bio}
