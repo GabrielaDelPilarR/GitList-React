@@ -46,10 +46,6 @@ const ProfileStyled = styled.div`
         gap:1rem;
         margin-block-end: 1.5rem;
     }
-
-    .custon{
-        border: 1px solid red;
-    }
 `   
 
 function Profile() {
@@ -71,6 +67,8 @@ function Profile() {
                 icon = {<Icon
                 name="heart"
                 size = {24}
+                color = "transparent"
+                stroke = "var(--pink)"
                 />}
                 >  
                 </Button>
@@ -79,13 +77,34 @@ function Profile() {
                 {bio}
             </p>
             <p className='followers info'>
-                {followers} <span>followers</span> • {following} <span>following</span>•
+               <Icon
+               name = "user"
+               size = {24}
+               color = "transparent"
+               stroke = "var(--white)"
+               /> {followers} <span> Followers</span> • {following} <span>Following</span>•
             </p>
-            <p className='location info'>{location}</p>
+            <p className='location info'>
+                <Icon
+                name = "location"
+                color = "transparent"
+                stroke = "var(--white)"
+                />
+                {location}</p>
             <a className= 'info' href='https://www.linkedin.com/in/gabrielarojasroque/' target='_blank' rel='noreferrer'>
+                <Icon
+                name = "link"
+                color = "transparent"
+                stroke = "var(--white)"
+                />
                 {blog}
             </a>
             <a className= 'info' href='https://twitter.com/Gabriel78383636' target='_blank' rel='noreferrer'>
+                <Icon
+                name= "twitter"
+                color = "transparent"
+                stroke = "var(--white)"
+                />
                 {twitter_username}
             </a>
         </ProfileStyled>

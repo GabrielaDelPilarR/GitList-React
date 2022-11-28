@@ -4,6 +4,7 @@ import Profile from './components/profile';
 import Filters from './components/filters';
 import RepoList from './components/repoList';
 import Search from './components/search';
+import repoData from './data/repo-data';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <Profile>
       </Profile>
       <Filters></Filters>
-      <RepoList></RepoList>
+      <RepoList repoList = {repoData}></RepoList>
       <Search></Search>
     </Layout>
   );
