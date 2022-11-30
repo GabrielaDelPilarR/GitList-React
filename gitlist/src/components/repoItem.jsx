@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Language from './language'
+import Icon from './icon'
 
 const RepoItemStyled = styled.div`
     display: flex;
@@ -87,6 +88,19 @@ function RepoItem(props) {
             {
                 props.language? <Language name = {props.language}/>: null
             }
+            <div className='details'>
+                <span className='details-item'>
+                    <Icon name = 'star'/>
+                    <span>{props.stargazers_count}</span>
+                </span>
+                <span className='details-item'>
+                    <Icon name = 'branch'/>
+                    <span>{props.forks_count}</span>
+                </span>
+                <span className='details-item'>     
+                    <span>{props.updated_at}</span>
+                </span>
+            </div>
             
         </RepoItemStyled>
     )
