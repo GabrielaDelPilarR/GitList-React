@@ -53,9 +53,30 @@ const RepoItemStyled = styled.div`
         padding-inline: 1.3rem;
         padding-block: 0.4rem;
     }
+
+    .details {
+        display:flex;
+        gap: 1rem;
+    }
+
+    .details-item {
+        display: flex; 
+        gap: .5rem;
+        align-items: center;
+        color: var(--grey-1);
+        & span::first-letter {
+            text-transform: uppercase;
+        }
+    }
 `
 
 function RepoItem(props) {
+    const updateTime = new Date(props.updated_at)
+    const today = new Date()
+    const diffMilliseconds = updateTime - today 
+    const diffDays = Math.ceil(diffMilliseconds / (1000 * 60 * 60 * 24)) 
+    const timeAgo = new Intl.RelativeTimeFormat('es').format(diffDays, 'days')
+
     return (
         <RepoItemStyled>
             <h3 className='title'>
@@ -85,10 +106,10 @@ function RepoItem(props) {
                 ):null
             }
 
+            <div className='details'>
             {
                 props.language? <Language name = {props.language}/>: null
             }
-            <div className='details'>
                 <span className='details-item'>
                     <Icon name = 'star'/>
                     <span>{props.stargazers_count}</span>
@@ -98,7 +119,7 @@ function RepoItem(props) {
                     <span>{props.forks_count}</span>
                 </span>
                 <span className='details-item'>     
-                    <span>{props.updated_at}</span>
+                    <span>{timeAgo}</span>
                 </span>
             </div>
             
