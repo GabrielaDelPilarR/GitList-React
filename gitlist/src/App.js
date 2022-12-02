@@ -4,7 +4,6 @@ import Profile from './components/profile';
 import Filters from './components/filters';
 import RepoList from './components/repoList';
 import Search from './components/search';
-import repoData from './data/repo-data';
 import {useState, useEffect} from 'react'
 import { getUser, getRepos } from './services/users';
 import {useParams} from 'react-router-dom'
@@ -27,9 +26,6 @@ function App() {
       }
       setUser(data)
     })
-  },[])
-
-  useEffect(()=>{
     getRepos(username).then(({data,isError})=>{
       if(isError){
         console.log('no hemos encontrado a este crack')
@@ -37,7 +33,7 @@ function App() {
       }
       setRepos(data)
     })
-  },[])
+  },[username])
   
   return (
     <Layout>
