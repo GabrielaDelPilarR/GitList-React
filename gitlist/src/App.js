@@ -7,14 +7,20 @@ import Search from './components/search';
 import repoData from './data/repo-data';
 import {useState, useEffect} from 'react'
 import { getUser, getRepos } from './services/users';
+import {useParams} from 'react-router-dom'
 
 
 function App() {
+  const params = useParams()
+  let username = params.user
+  if(!username){
+    username = 'GabrielaDelPilarR'
+  }
   const [user,setUser] = useState({})
   const [repos,setRepos] = useState([])
 
   useEffect(()=>{
-    getUser('GabrielaDelPilarR').then(({data,isError})=>{
+    getUser(username).then(({data,isError})=>{
       if(isError){
         console.log('no hemos encontrado a este crack')
         return
@@ -24,7 +30,7 @@ function App() {
   },[])
 
   useEffect(()=>{
-    getRepos('GabrielaDelPilarR').then(({data,isError})=>{
+    getRepos(username).then(({data,isError})=>{
       if(isError){
         console.log('no hemos encontrado a este crack')
         return
