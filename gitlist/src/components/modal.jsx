@@ -1,10 +1,40 @@
 /* eslint-disable no-unused-vars */
 import styled from 'styled-components'
-import { useRef } from 'react'
+import React, { createElement, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Overlay from './overlay'
 import { ButtonContrast } from './button'
 import InputStyled from './input'
+import  ReactDOM  from 'react-dom'
+
+const modalRoot = document.getElementById('portal')
+
+class ModalPortal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.el= document.createElement('div')
+    }
+
+    componentWillUnmount(){
+        modalRoot.removeChild(this.el)
+    }
+
+    componentDidMount(){
+        modalRoot.appendChild(this.el)
+    }
+
+    render(){
+        return ReactDOM.createPortal(this.props.children, this.el)
+    }
+}
+
+export default function Modal(){
+    return(
+        <ModalPortal>
+            <ModalContent></ModalContent>
+        </ModalPortal>
+    )
+}
 
 const ModalContentStyled = styled.form `
     background: var(--bg);
@@ -24,7 +54,6 @@ const ModalContentStyled = styled.form `
         margin:0;
     }
 `
-
 
 function ModalContent() {
     const form = useRef(null)
@@ -48,4 +77,3 @@ function ModalContent() {
 
 }
 
-export default ModalContent
