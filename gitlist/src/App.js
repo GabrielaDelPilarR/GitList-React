@@ -18,6 +18,7 @@ function App() {
   }
   const [user,setUser] = useState({})
   const [repos,setRepos] = useState([])
+  const [modal, setModal] = useState(false)
 
   useEffect(()=>{
     getUser(username).then(({data,isError})=>{
@@ -38,12 +39,12 @@ function App() {
   
   return (
     <Layout>
-      <Modal></Modal>
+      <Modal isActive = {modal} setModal={setModal}></Modal>
       <Profile {...user}>
       </Profile>
       <Filters></Filters>
       <RepoList repoList = {repos}></RepoList>
-      <Search></Search>
+      <Search setModal= {setModal}></Search>
     </Layout>
   );
 }

@@ -100,7 +100,7 @@ function RepoItem(props) {
                 props.topics.length ? (
                     <div className="topicList">
                         {
-                            props.topics.map(item=> <span className='topics'>{item}</span>)
+                            props.topics.map(item=> <span className='topics'key={item}>{item}</span>)
                         }
                     </div>
                 ):null
