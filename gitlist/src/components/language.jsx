@@ -17,11 +17,18 @@ const languages = {
         color:'red'
     },
     css :{
-        color:'green'
+        color:'#563d7c'
     },
     javascript: {
-        color: 'yellow'
+        color: '#f1e05a'
+    },
+    html: {
+        color: 'orange'
+    },
+    typescript: {
+        color: '#3178c6'
     }
+
 }
 
 function Language({name}) {
