@@ -11,13 +11,14 @@ const RepoListStyled = styled.div`
 
 `
 
-function RepoList({repoList, search}) {
+function RepoList({repoList, search, value}) {
     let list = repoList
     if(search !== ''){
         list = list.filter((item)=>{
             return item.name.search(search) >= 0 
         })
     }
+    
     return (
         <RepoListStyled>
             {list.map((item)=>{

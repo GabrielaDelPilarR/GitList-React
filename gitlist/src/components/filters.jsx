@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import InputText from './input'
 import Selector from './selector'
 import Separador from './separador'
+import { useState } from 'react'
 
 const FiltersStyled = styled.div`
     grid-area: filters;
@@ -23,8 +24,13 @@ const FiltersStyled = styled.div`
 `
 
 function Filters({repoListCount, setSearch}) {
+    const [value , setValue] = useState('')
     function handleChange(event){
         setSearch(event.target.value)
+    }
+    function handleValue(event){
+        setValue(event.target.value)
+        console.log(event.target.value)
     }
     return (
         <FiltersStyled>
@@ -43,11 +49,11 @@ function Filters({repoListCount, setSearch}) {
                 <option value="all" >All</option>
                 <option value="forks">Forks</option>
             </Selector>
-            <Selector>
-                <option value="lenguaje">Lenguaje</option>
-                <option value="html">Html</option>
-                <option value="css">Css</option>
-                <option value="javascript">Javascript</option>
+            <Selector value={value} onChange= {handleValue}>
+                <option value="Lenguaje">Lenguaje</option>
+                <option value="Html">Html</option>
+                <option value="Css">Css</option>
+                <option value="Javascript">Javascript</option>
             </Selector>
             <Selector>
                 <option value="ordenar">Ordenar</option>

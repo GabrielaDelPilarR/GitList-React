@@ -20,6 +20,7 @@ function App() {
   const [repos,setRepos] = useState([])
   const [modal, setModal] = useState(false)
   const [search, setSearch] = useState('')
+  
 
   useEffect(()=>{
     getUser(username).then(({data,isError})=>{
